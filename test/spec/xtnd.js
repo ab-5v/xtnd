@@ -94,4 +94,39 @@ describe('xtnd', function() {
         });
     });
 
+    describe('array', function() {
+
+        it('should path through array', function() {
+            expect( xtnd.array([1, 2, 3]) ).to.eql([1, 2, 3]);
+        });
+
+        it('should return empty array on undefined', function() {
+            expect( xtnd.array(undefined) ).to.eql( [] );
+        });
+
+        it('should make array from arguments', function() {
+            (function() {
+                expect( xtnd.array(arguments) ).to.eql([1, 2])
+            })(1, 2);
+        });
+
+        it('should make array from object', function() {
+            expect( xtnd.array({a: 1}) ).to.eql( [{a: 1}] );
+        });
+
+        it('should make array from null', function() {
+            expect( xtnd.array(null) ).to.eql( [null] );
+        });
+
+        it('should make array from function', function() {
+            var f = function() {};
+            expect( xtnd.array(f) ).to.eql( [f] );
+        });
+
+        it('should make array from primitive', function() {
+            expect( xtnd.array(1234) ).to.eql( [1234] );
+            expect( xtnd.array('as') ).to.eql( ['as'] );
+        });
+    });
+
 });
