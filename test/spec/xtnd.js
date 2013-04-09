@@ -178,4 +178,19 @@ describe('xtnd', function() {
 
     });
 
+    describe('prod', function() {
+
+        beforeEach(function() {
+            this.spy = sinon.spy();
+        });
+
+        it('should iterate through product', function() {
+            xtnd.prod([1,2,3], [1,2], this.spy);
+
+            expect( this.spy.args )
+                .to.eql( [ [ 1, 1 ], [ 1, 2 ], [ 2, 1 ], [ 2, 2 ], [ 3, 1 ], [3, 2] ] );
+        });
+
+    });
+
 });
