@@ -76,4 +76,22 @@ describe('xtnd', function() {
 
     });
 
+    describe('hash', function() {
+
+        it('should return hash by array', function() {
+            expect( xtnd.hash( [{a: 'k1', b: 2}, {a: 'k2', c: 3}], 'a' ) )
+                .to.eql( { k1: {a: 'k1', b: 2}, k2: {a: 'k2', c: 3} } )
+        });
+
+        it('should skip objects without key', function() {
+            expect( xtnd.hash( [{a: 'k1', b: 2}, {a: 'k2', c: 3}, {c: 4}], 'a' ) )
+                .to.eql( { k1: {a: 'k1', b: 2}, k2: {a: 'k2', c: 3} } )
+        });
+
+        it('should skip non-object arrays', function() {
+            expect( xtnd.hash([null, undefined, 1, 'asd', function() {}], 'a') )
+                .to.eql({});
+        });
+    });
+
 });
