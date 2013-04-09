@@ -1,3 +1,4 @@
+var sinon = require('sinon');
 var expect = require('expect.js');
 
 var xtnd = require('../../lib/xtnd.js');
@@ -127,6 +128,54 @@ describe('xtnd', function() {
             expect( xtnd.array(1234) ).to.eql( [1234] );
             expect( xtnd.array('as') ).to.eql( ['as'] );
         });
+    });
+
+    describe('each', function() {
+
+        beforeEach(function() {
+            this.spy = sinon.spy();
+        });
+
+        it('should iterate through array', function() {
+            xtnd.each([1, 2, 3], this.spy);
+
+            expect( this.spy.args )
+                .to.eql( [ [ 1, 0, [1, 2, 3] ], [ 2, 1, [1, 2, 3] ], [ 3, 2, [1, 2, 3] ] ] );
+        });
+
+        it('should return iterated array', function() {
+            expect( xtnd.each([1, 2, 3], this.spy) ).to.eql( [1, 2, 3] );
+        });
+
+        it('should iterate through object', function() {
+            xtnd.each({a: 1, b: 2}, this.spy);
+
+            expect( this.spy.args )
+                .to.eql( [ [ 1, 'a', {a: 1, b: 2} ], [ 2, 'b', {a: 1, b: 2} ] ] );
+        });
+
+        it('should return iterated array', function() {
+            expect( xtnd.each({a: 1, b: 2}, this.spy) ).to.eql( {a: 1, b: 2} );
+        });
+
+        it('should not iterate through non objects', function() {
+            xtnd.each(123, this.spy);
+            xtnd.each('asd', this.spy);
+            xtnd.each(null, this.spy);
+            xtnd.each(undefined, this.spy);
+            xtnd.each(function() {}, this.spy);
+
+            expect( this.spy.notCalled ).to.be.ok();
+        });
+
+        it('should return primitives', function() {
+            expect( xtnd.each(123, this.spy) ).to.eql( 123 );
+            expect( xtnd.each('asd', this.spy) ).to.eql( 'asd' );
+            expect( xtnd.each(null, this.spy) ).to.eql( null );
+            expect( xtnd.each(undefined, this.spy) ).to.eql( undefined );
+            expect( xtnd.each(function() {}, this.spy) ).to.be.a(Function);
+        });
+
     });
 
 });
