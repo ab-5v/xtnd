@@ -1,0 +1,27 @@
+{
+    "name": "xtnd",
+    "version": "0.0.1",
+    "description": "Utility for arrays and objects",
+    "keywords": [ "util", "extend" ],
+    "author": {
+        "name": "Artur Burtsev",
+        "email": "artjock@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/artjock/xtnd.git"
+    },
+    "engines": {
+        "node": ">= 0.8.0"
+    },
+    "scripts": {
+        "test": "./node_modules/.bin/mocha --reporter spec test/spec"
+    },
+    "main": "./lib/xtnd.js",
+    "devDependencies": {
+        "mocha": "*",
+        "expect.js": "*",
+        "sinon": "*"
+    },
+    "private": true
+}
