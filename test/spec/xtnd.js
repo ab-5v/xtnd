@@ -47,7 +47,31 @@ describe('xtnd', function() {
         });
 
         it('should ignore non-object values', function() {
-            expect( this.src.extend(123, 'asd', null, undefined, {b: 2}) ).to.eql({ a: 1, b: 2 });
+            expect( this.src.extend(123, 'asd', null, undefined, function() {}, {b: 2}) )
+                .to.eql({ a: 1, b: 2 });
+        });
+
+    });
+
+    describe('keys', function() {
+
+        it('should return keys of object', function() {
+            expect( xtnd.keys({a: 1, b: 2}) ).to.eql(['a', 'b']);
+        });
+
+        it('should return keys of array', function() {
+            expect( xtnd.keys(['a', 'b']) ).to.eql(['0', '1']);
+        });
+
+        it('should return empty array for null', function() {
+            expect( xtnd.keys(null) ).to.eql( [] );
+        });
+
+        it('should return empty array for non-object values', function() {
+            expect( xtnd.keys('123') ).to.eql( [] );
+            expect( xtnd.keys(undefined) ).to.eql( [] );
+            expect( xtnd.keys(1234) ).to.eql( [] );
+            expect( xtnd.keys(function() {}) ).to.eql( [] );
         });
 
     });
