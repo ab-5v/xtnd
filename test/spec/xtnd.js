@@ -158,14 +158,18 @@ describe('xtnd', function() {
             expect( xtnd.each({a: 1, b: 2}, this.spy) ).to.eql( {a: 1, b: 2} );
         });
 
-        it('should not iterate through non objects', function() {
+        it('should use xtnd.array while iterating through non objects', function() {
+            sinon.spy(xtnd, 'array');
+
             xtnd.each(123, this.spy);
             xtnd.each('asd', this.spy);
             xtnd.each(null, this.spy);
             xtnd.each(undefined, this.spy);
             xtnd.each(function() {}, this.spy);
 
-            expect( this.spy.notCalled ).to.be.ok();
+            expect( xtnd.array.callCount ).to.eql(5);
+
+            xtnd.array.restore();
         });
 
         it('should return primitives', function() {
