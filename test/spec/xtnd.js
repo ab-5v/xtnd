@@ -182,6 +182,89 @@ describe('xtnd', function() {
 
     });
 
+    describe('map', function() {
+
+        it('should map array to array by default', function() {
+            expect( xtnd.map([1,2,3], function(a) { return a+1; }) )
+                .to.eql([2,3,4]);
+        });
+
+        /*
+        it('should map array to array forced', function() {
+            expect( xtnd.map([1,2,3], function(a) { return a+1; }, []) )
+                .to.eql([2,3,4]);
+        });
+
+        it('should map array to object forced', function() {
+            expect( xtnd.map([1,2,3], function(a) { return a+1; }, {}) )
+                .to.eql( {'0': 2, '1': 3, '2': 4} );
+        });
+
+        it('should map object to object by default', function() {
+            expect( xtnd.map({a: 1, b: 2}, function(a) { return a+1; }) )
+                .to.eql( {a: 2, b: 3} );
+        });
+
+        it('should map object to object forced', function() {
+            expect( xtnd.map({a: 1, b: 2}, function(a) { return a+1; }, {}) )
+                .to.eql( {a: 2, b: 3} );
+        });
+
+        it('should map object to array forced', function() {
+            expect( xtnd.map({a: 1, b: 2}, function(a) { return a+1; }, []) )
+                .to.eql( [2, 3] );
+        });
+
+        it('should map array and modify forced array', function() {
+            var forced = [];
+            xtnd.map([1,2,3], function(a) { return a+1; }, forced);
+
+            expect( forced ).to.eql([2,3,4]);
+        });
+
+        it('should map array and modify forced object', function() {
+            var forced = {};
+            xtnd.map([1,2,3], function(a) { return a+1; }, forced);
+
+            expect( forced ).to.eql( {'0': 2, '1': 3, '2': 4} );
+        });
+
+        it('should map object and modify forced', function() {
+            var forced = {};
+            xtnd.map({a: 1, b: 2}, function(a) { return a+1; }, forced);
+
+            expect( forced ).to.eql( {a: 2, b: 3} );
+        });
+
+        it('should map object and modify forced', function() {
+            var forced = [];
+            xtnd.map({a: 1, b: 2}, function(a) { return a+1; }, forced);
+
+            expect( forced ).to.eql( [2, 3] );
+        });
+        */
+
+        it('should not modify original array', function() {
+            var arr = [1, 2, 3];
+            xtnd.map(arr, function(a) { return a+1; });
+
+            expect(arr).to.eql([1,2,3]);
+
+        });
+
+        it('should filter values from array by undefined', function() {
+
+            expect( xtnd.map([1,2,3], function(a) { if (a != 2) return a+1; }) )
+                .to.eql( [2,4] );
+        });
+
+        /*
+        it('should not modify original object', function() {
+        });
+        */
+
+    });
+
     describe('prod', function() {
 
         beforeEach(function() {
