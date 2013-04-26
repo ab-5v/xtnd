@@ -22,6 +22,5 @@
         "mocha": "*",
         "expect.js": "*",
         "sinon": "*"
-    },
-    "private": true
+    }
 }
