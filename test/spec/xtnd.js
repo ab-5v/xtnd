@@ -82,6 +82,37 @@ describe('xtnd', function() {
 
     });
 
+    describe('is', function() {
+
+        it('isObject should detect objects', function() {
+            expect( xtnd.isObject({}) ).to.eql(true);
+        });
+
+        it('isObject should ignore other types', function() {
+            [ [], 1, 'af', arguments, null, undefined, false, true ]
+                .forEach(function(obj) {
+                    expect( xtnd.isObject(obj) ).to.eql(false);
+                });
+        });
+
+        it('isArray should detect arrays', function() {
+            expect( xtnd.isArray([]) ).to.eql(true);
+        });
+        it('isFunction should detect functions', function() {
+            expect( xtnd.isFunction(function() {}) ).to.eql(true);
+        });
+        it('isArguments should detect arguments object', function() {
+            expect( xtnd.isArguments(arguments) ).to.eql(true);
+        });
+        it('isNull should detect nulls', function() {
+            expect( xtnd.isNull(null) ).to.eql(true);
+        });
+        it('isUndefined should detect undefined', function() {
+            expect( xtnd.isUndefined(undefined) ).to.eql(true);
+        });
+
+    });
+
     describe('keys', function() {
 
         it('should return keys of object', function() {
@@ -323,6 +354,8 @@ describe('xtnd', function() {
             expect( xtnd.filter(0, filter) ).to.eql([]);
             expect( xtnd.filter('abc', filter) ).to.eql(['abc']);
             expect( xtnd.filter('', filter) ).to.eql([]);
+            expect( xtnd.filter(true, filter) ).to.eql([true]);
+            expect( xtnd.filter(false, filter) ).to.eql([]);
         });
 
     });
