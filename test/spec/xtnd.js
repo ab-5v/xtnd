@@ -293,6 +293,40 @@ describe('xtnd', function() {
 
     });
 
+    describe('filter', function() {
+
+        it('should filter array', function() {
+            var arr = [1, 2, 3];
+
+            expect( xtnd.filter(arr, function(v) {return v%2;}) ).to.eql( [1,3] );
+        });
+
+        it('should filter object', function() {
+            var obj = {a: 1, b: 2, c: 3};
+
+            expect( xtnd.filter(obj, function(v) {return v%2;}) ).to.eql( {a: 1, c: 3} );
+        });
+
+        it('should filter complex object', function() {
+            var obj = {a: {v: 1}, b: {v: 2}, c: {v: 3}};
+
+            expect( xtnd.filter(obj, function(v) {return v.v%2;}) ).to.eql( {a: {v:1}, c: {v:3}} );
+        });
+
+        it('should filter non arrays', function() {
+            var filter = function(a) { return a; };
+
+            expect( xtnd.filter(null, filter) ).to.eql([]);
+            expect( xtnd.filter(undefined, filter) ).to.eql([]);
+            expect( xtnd.filter(filter, filter) ).to.eql([filter]);
+            expect( xtnd.filter(123, filter) ).to.eql([123]);
+            expect( xtnd.filter(0, filter) ).to.eql([]);
+            expect( xtnd.filter('abc', filter) ).to.eql(['abc']);
+            expect( xtnd.filter('', filter) ).to.eql([]);
+        });
+
+    });
+
     describe('prod', function() {
 
         beforeEach(function() {
