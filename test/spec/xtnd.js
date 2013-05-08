@@ -54,6 +54,34 @@ describe('xtnd', function() {
 
     });
 
+    describe('type', function() {
+
+        it('should return type for object', function() {
+            expect( xtnd.type({}) ).to.eql( xtnd.TYPE.OBJECT );
+        });
+
+        it('should return type for array', function() {
+            expect( xtnd.type([]) ).to.eql( xtnd.TYPE.ARRAY );
+        });
+
+        it('should return type for null', function() {
+            expect( xtnd.type(null) ).to.eql( xtnd.TYPE.NULL );
+        });
+
+        it('should return type for undefined', function() {
+            expect( xtnd.type(undefined) ).to.eql( xtnd.TYPE.UNDEFINED );
+        });
+
+        it('should return type for arguments', function() {
+            expect( xtnd.type(arguments) ).to.eql( xtnd.TYPE.ARGUMENTS );
+        });
+
+        it('should return type for function', function() {
+            expect( xtnd.type(function() {}) ).to.eql( xtnd.TYPE.FUNCTION );
+        });
+
+    });
+
     describe('keys', function() {
 
         it('should return keys of object', function() {
