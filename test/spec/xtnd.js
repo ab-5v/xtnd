@@ -140,12 +140,12 @@ describe('xtnd', function() {
 
         it('should return hash by array', function() {
             expect( xtnd.hash( [{a: 'k1', b: 2}, {a: 'k2', c: 3}], 'a' ) )
-                .to.eql( { k1: {a: 'k1', b: 2}, k2: {a: 'k2', c: 3} } )
+                .to.eql( { k1: {a: 'k1', b: 2}, k2: {a: 'k2', c: 3} } );
         });
 
         it('should skip objects without key', function() {
             expect( xtnd.hash( [{a: 'k1', b: 2}, {a: 'k2', c: 3}, {c: 4}], 'a' ) )
-                .to.eql( { k1: {a: 'k1', b: 2}, k2: {a: 'k2', c: 3} } )
+                .to.eql( { k1: {a: 'k1', b: 2}, k2: {a: 'k2', c: 3} } );
         });
 
         it('should skip non-object arrays', function() {
@@ -166,7 +166,7 @@ describe('xtnd', function() {
 
         it('should make array from arguments', function() {
             (function() {
-                expect( xtnd.array(arguments) ).to.eql([1, 2])
+                expect( xtnd.array(arguments) ).to.eql([1, 2]);
             })(1, 2);
         });
 
@@ -218,7 +218,7 @@ describe('xtnd', function() {
         });
 
         it('should stop iteraing if callback returned false', function() {
-            var spy = sinon.spy(function(v) { return v !== 3; })
+            var spy = sinon.spy(function(v) { return v !== 3; });
 
             xtnd.each([1, 3, 5], spy);
 
@@ -332,17 +332,25 @@ describe('xtnd', function() {
 
     });
 
-    describe('prod', function() {
+    describe('first', function() {
 
-        beforeEach(function() {
-            this.spy = sinon.spy();
+        it('should return first matched element', function() {
+            expect( xtnd.first([1,2,3,2], function(val) { return val === 2; }) ).to.eql( 2 );
         });
 
-        it('should iterate through product', function() {
-            xtnd.prod([1,2,3], [1,2], this.spy);
+        it('should not iterate through all array', function() {
+            var spy = sinon.spy(function(v) { return v !== 4; });
+            xtnd.first([4,5,6,7], spy);
 
-            expect( this.spy.args )
-                .to.eql( [ [ 1, 1 ], [ 1, 2 ], [ 2, 1 ], [ 2, 2 ], [ 3, 1 ], [3, 2] ] );
+            expect( spy.callCount ).to.eql( 2 );
+        });
+
+        it('should return undefined, when no elements find', function() {
+            expect( xtnd.first([4,5,6], function(v) { return v === 3; }) ).to.eql( undefined );
+        });
+
+        it('should return undefined when no callback provided', function() {
+            expect( xtnd.first([4,5,6]) ).to.eql( undefined );
         });
 
     });
