@@ -217,6 +217,14 @@ describe('xtnd', function() {
             expect( xtnd.each({a: 1, b: 2}, this.spy) ).to.eql( {a: 1, b: 2} );
         });
 
+        it('should stop iteraing if callback returned false', function() {
+            var spy = sinon.spy(function(v) { return v !== 3; })
+
+            xtnd.each([1, 3, 5], spy);
+
+            expect(spy.callCount).to.eql(2);
+        });
+
         it('should use xtnd.array while iterating through non objects', function() {
             sinon.spy(xtnd, 'array');
 
