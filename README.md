@@ -25,7 +25,7 @@ var xtnd = require('xtnd');
 * [xtnd.map](#map)
 * [xtnd.filter](#filter)
 * [xtnd.first](#first)
-* [xtnd.is<Type>](#is)
+* [xtnd.is&lt;Type&gt;](#is)
 
 
 <a name="extend"></a>
@@ -92,7 +92,7 @@ var res = xtnd.first([2, 3, 4, 5], function(val, i, orig) {
 ```
 
 <a name="is"></a>
-#### xtnd.is<Type>
+#### xtnd.is&lt;Type&gt;
 Strong type checkers.
 
 ```js
