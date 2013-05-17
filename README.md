@@ -12,16 +12,26 @@ npm install xtnd
 
 ### Usage
 
+* [extend](#extend)
+* [xtnd.array](#array)
+* [xtnd.hash](#hash)
+* [xtnd.each](#each)
+* [xtnd.map](#map)
+* [xtnd.filter](#filter)
+* [xtnd.first](#first)
+* [xtnd.is<Type>](#is)
+
 ```js
 var xtnd = require('xtnd');
 ```
-
+<a name="extend"></a>
 #### object.extend(src, ...)
 Extends any object with `src`
 ```js
 var a = ({}).extend({a: 1});  // {a: 1}
 ```
 
+<a name="array"></a>
 #### xtnd.array(any)
 Makes array from `any` value.
 ```js
@@ -34,12 +44,14 @@ xtnd.array(123);        // [123]
 xtnd.array('a');        // ['a']
 ```
 
+<a name="hash"></a>
 #### xtnd.hash(array, key)
 Creates object from `array` of objects. Skips objects withou `key`. 
 ```js
 xtnd.hash([{a: 1, b: 2}, {a: 3, b: 4}], 'a');   // {1: {a: 1, b: 2}, 3: {a: 3, b: 4}}
 ```
 
+<a name="each"></a>
 #### xtnd.each(list, function(val, i, orig) {})
 Like any other `each` can iterate through arrays and objects. You can return `false` from callback and it will stop iterationg.
 ```js
@@ -48,6 +60,7 @@ xtnd.each(list, function(val, i, orig) {
 });
 ```
 
+<a name="map"></a>
 #### xtnd.map(list, function(val, i, orig) {})
 Can map not only arrays but also objects. You can return `undefined` from callback to skip `val`.
 ```js
@@ -59,9 +72,12 @@ var res = xtnd.map(src, function(val, i, orig) {
 });
 // res === {a: 5, c: 7}
 ```
+
+<a name="filter"></a>
 #### xtnd.filter(list, function(val, i, orig) {})
 Like a map, but you can use any falsy-value to skip `val`.
 
+<a name="first"></a>
 #### xtnd.first(list, function(val, i, orig) {})
 For array or object returns first matched (truthy-value returned) by callback `val` or `undefined`. It stops iterating after `val` returned.
 ```js
@@ -71,6 +87,7 @@ var res = xtnd.first([2, 3, 4, 5], function(val, i, orig) {
 // res === 3
 ```
 
+<a name="is"></a>
 #### xtnd.is<Type>
 Strong type checkers.
 
