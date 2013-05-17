@@ -12,6 +12,12 @@ npm install xtnd
 
 ### Usage
 
+```js
+var xtnd = require('xtnd');
+```
+
+### Api
+
 * [extend](#extend)
 * [xtnd.array](#array)
 * [xtnd.hash](#hash)
@@ -21,9 +27,7 @@ npm install xtnd
 * [xtnd.first](#first)
 * [xtnd.is<Type>](#is)
 
-```js
-var xtnd = require('xtnd');
-```
+
 <a name="extend"></a>
 #### object.extend(src, ...)
 Extends any object with `src`
