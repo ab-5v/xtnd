@@ -2,7 +2,7 @@
     "name": "xtnd",
     "version": "0.0.3",
     "description": "Utility for arrays and objects",
-    "keywords": [ "util", "extend" ],
+    "keywords": [ "utility", "extend", "each", "map", "filter" ],
     "author": {
         "name": "Artur Burtsev",
         "email": "artjock@gmail.com"
