@@ -24,7 +24,7 @@ var xtnd = require('xtnd');
 * [xtnd.each](#each)
 * [xtnd.map](#map)
 * [xtnd.filter](#filter)
-* [xtnd.first](#first)
+* [xtnd.find](#find)
 * [xtnd.is&lt;Type&gt;](#is)
 
 
@@ -81,11 +81,11 @@ var res = xtnd.map(src, function(val, i, orig) {
 #### xtnd.filter(list, function(val, i, orig) {})
 Like a map, but you can use any falsy-value to skip `val`.
 
-<a name="first"></a>
-#### xtnd.first(list, function(val, i, orig) {})
+<a name="find"></a>
+#### xtnd.find(list, function(val, i, orig) {})
 For array or object returns first matched (truthy-value returned) by callback `val` or `undefined`. It stops iterating after `val` returned.
 ```js
-var res = xtnd.first([2, 3, 4, 5], function(val, i, orig) {
+var res = xtnd.find([2, 3, 4, 5], function(val, i, orig) {
   return val % 2;  
 });
 // res === 3

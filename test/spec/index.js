@@ -334,25 +334,25 @@ describe('xtnd', function() {
 
     });
 
-    describe('first', function() {
+    describe('find', function() {
 
         it('should return first matched element', function() {
-            expect( xtnd.first([1,2,3,2], function(val) { return val === 2; }) ).to.eql( 2 );
+            expect( xtnd.find([1,2,3,2], function(val) { return val === 2; }) ).to.eql( 2 );
         });
 
         it('should not iterate through all array', function() {
             var spy = sinon.spy(function(v) { return v !== 4; });
-            xtnd.first([4,5,6,7], spy);
+            xtnd.find([4,5,6,7], spy);
 
             expect( spy.callCount ).to.eql( 2 );
         });
 
         it('should return undefined, when no elements find', function() {
-            expect( xtnd.first([4,5,6], function(v) { return v === 3; }) ).to.eql( undefined );
+            expect( xtnd.find([4,5,6], function(v) { return v === 3; }) ).to.eql( undefined );
         });
 
         it('should return undefined when no callback provided', function() {
-            expect( xtnd.first([4,5,6]) ).to.eql( undefined );
+            expect( xtnd.find([4,5,6]) ).to.eql( undefined );
         });
 
     });

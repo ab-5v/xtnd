@@ -175,7 +175,7 @@ var xtnd = {
      *
      * @returns Object
      */
-    first: function(arr, cb) {
+    find: function(arr, cb) {
         var ans;
 
         if (typeof cb !== 'function') { return ans; }
