@@ -12,8 +12,13 @@ npm install xtnd
 
 ### Usage
 
+node:
 ```js
 var xtnd = require('xtnd');
+```
+browser:
+```html
+<script src="./xtnd/index.js"></script>
 ```
 
 ### Api
