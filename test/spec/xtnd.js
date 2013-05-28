@@ -1,7 +1,7 @@
 var sinon = require('sinon');
 var expect = require('expect.js');
 
-var xtnd = require('../../lib/xtnd.js');
+var xtnd = require('../../');
 
 describe('xtnd', function() {
 
