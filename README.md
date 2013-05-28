@@ -6,17 +6,19 @@ Extra methods for underscore and lodash
 
 ### Installation
 
+npm
 ```js
 npm install xtnd
+```
+```js
+bower install xtnd
 ```
 
 ### Usage
 
-node:
 ```js
 var xtnd = require('xtnd');
 ```
-browser:
 ```html
 <script src="./xtnd/index.js"></script>
 ```
