@@ -1,3 +1,5 @@
+;(function(root) {
+
 var a_slice = Array.prototype.slice;
 var o_toString = Object.prototype.toString;
 
@@ -212,4 +214,11 @@ Object.keys(TYPE).forEach(function(type) {
     };
 });
 
-module.exports = xtnd;
+
+if (typeof module === 'object' && module.exports) {
+    module.exports = xtnd;
+} else {
+    root.xtnd = xtnd;
+}
+
+})(this);

@@ -1,7 +1,9 @@
-var sinon = require('sinon');
-var expect = require('expect.js');
+if (typeof require === 'function') {
+    sinon = require('sinon');
+    expect = require('expect.js');
 
-var xtnd = require('../../');
+    xtnd = require('../../');
+}
 
 describe('xtnd', function() {
 
