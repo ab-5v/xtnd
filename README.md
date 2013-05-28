@@ -6,7 +6,6 @@ Extra methods for underscore and lodash
 
 ### Installation
 
-npm
 ```js
 npm install xtnd
 ```
