@@ -52,7 +52,8 @@ var xtnd = {
      * @returns Array
      */
     keys: function(obj) {
-        return obj && typeof obj === 'object' ? Object.keys(obj) : [];
+        var type = obj && typeof obj;
+        return type === 'object' || type === 'function' ? Object.keys(obj) : [];
     },
 
     /**

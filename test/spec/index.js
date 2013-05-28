@@ -54,6 +54,20 @@ describe('xtnd', function() {
                 .to.eql({ a: 1, b: 2 });
         });
 
+        it('should extend function', function() {
+            var f1 = function() {};
+            f1.extend({a: 1});
+
+            expect( f1.a ).to.eql( 1 );
+        });
+
+        it('should extend static methods', function() {
+            var f1 = (function() {}).extend({a: 1, b: 2});
+            var f2 = (function() {}).extend(f1);
+
+            expect( f2.b ).to.eql(2);
+        });
+
     });
 
     describe('type', function() {
