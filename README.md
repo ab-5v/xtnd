@@ -24,7 +24,7 @@ var xtnd = require('xtnd');
 
 ### Api
 
-* [extend](#extend)
+* [xtnd](#xtnd)
 * [xtnd.array](#array)
 * [xtnd.hash](#hash)
 * [xtnd.each](#each)
@@ -34,11 +34,11 @@ var xtnd = require('xtnd');
 * [xtnd.is&lt;Type&gt;](#is)
 
 
-<a name="extend"></a>
-#### object.extend(src, ...)
+<a name="xtnd"></a>
+#### xtnd(dest, src, ...)
 Extends any object with `src`
 ```js
-var a = ({}).extend({a: 1});  // {a: 1}
+var a = xtnd({}, {a: 1});  // {a: 1}
 ```
 
 <a name="array"></a>
