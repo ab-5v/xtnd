@@ -1,4 +1,4 @@
-;(function(root) {
+;(function(root, undefined) {
 
 var a_slice = Array.prototype.slice;
 var o_toString = Object.prototype.toString;
@@ -41,6 +41,15 @@ var xtnd = {
      * @returns String
      */
     type: function(obj) {
+
+        if (obj === undefined) {
+            return TYPE.UNDEFINED;
+        }
+
+        if (obj === null) {
+            return TYPE.NULL;
+        }
+
         return o_toString.call(obj);
     },
 
