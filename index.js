@@ -99,7 +99,7 @@ var xtnd = {
      */
     array: function(val) {
 
-        switch ( o_toString.call(val) ) {
+        switch ( xtnd.type(val) ) {
             case TYPE.ARRAY:        return val;
             case TYPE.ARGUMENTS:    return a_slice.call(val);
             case TYPE.UNDEFINED:    return [];
