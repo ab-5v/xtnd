@@ -13,57 +13,53 @@ describe('xtnd', function() {
             this.src = {a: 1};
         });
 
-        it('should be a function in Object.prototype', function() {
-            expect( Object.prototype.extend ).to.be.a(Function);
-        });
-
         it('should extend object', function() {
-            this.src.extend({b: 2, c: 3});
+            xtnd(this.src, {b: 2, c: 3});
 
             expect( this.src ).to.eql( {a: 1, b: 2, c: 3 });
         });
 
         it('should overwrite value in object', function() {
-            this.src.extend({a: 2});
+            xtnd(this.src, {a: 2});
 
             expect( this.src ).to.eql( {a: 2} );
         });
 
         it('should return extended object', function() {
-            expect( this.src.extend({b: 2}) ).to.eql( {a: 1, b: 2 });
+            expect( xtnd(this.src, {b: 2}) ).to.eql( {a: 1, b: 2 });
         });
 
         it('should extend empty object', function() {
-            expect( ({}).extend({a: 1}) ).to.eql({a: 1});
+            expect( xtnd({}, {a: 1}) ).to.eql({a: 1});
         });
 
         it('should extend with array', function() {
-            expect( this.src.extend(['a', 'b']) ).to.eql({a: 1, '0': 'a', '1': 'b'});
+            expect( xtnd(this.src, ['a', 'b']) ).to.eql({a: 1, '0': 'a', '1': 'b'});
         });
 
         it('should extend with more than one object', function() {
-            expect( this.src.extend({b: 2}, {c: 3}) ).to.eql({ a: 1, b: 2, c: 3 });
+            expect( xtnd(this.src, {b: 2}, {c: 3}) ).to.eql({ a: 1, b: 2, c: 3 });
         });
 
         it('should overwrite values for more than one object', function() {
-            expect( this.src.extend({b: 2}, {b: 3}) ).to.eql({ a: 1, b: 3 });
+            expect( xtnd(this.src, {b: 2}, {b: 3}) ).to.eql({ a: 1, b: 3 });
         });
 
         it('should ignore non-object values', function() {
-            expect( this.src.extend(123, 'asd', null, undefined, function() {}, {b: 2}) )
+            expect( xtnd(this.src, 123, 'asd', null, undefined, function() {}, {b: 2}) )
                 .to.eql({ a: 1, b: 2 });
         });
 
         it('should extend function', function() {
             var f1 = function() {};
-            f1.extend({a: 1});
+            xtnd(f1, {a: 1});
 
             expect( f1.a ).to.eql( 1 );
         });
 
         it('should extend static methods', function() {
-            var f1 = (function() {}).extend({a: 1, b: 2});
-            var f2 = (function() {}).extend(f1);
+            var f1 = xtnd(function() {}, {a: 1, b: 2});
+            var f2 = xtnd(function() {}, f1);
 
             expect( f2.b ).to.eql(2);
         });

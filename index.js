@@ -3,23 +3,6 @@
 var a_slice = Array.prototype.slice;
 var o_toString = Object.prototype.toString;
 
-Object.defineProperty(Object.prototype, 'extend', {
-    value: function() {
-        var arg, keys;
-
-        for (var i = 0, l = arguments.length; i < l; i++) {
-            arg = arguments[i];
-            keys = xtnd.keys(arguments[i]);
-
-           for (var j = 0; j < keys.length; j++) {
-               this[ keys[j] ] = arg[ keys[j] ];
-           }
-        }
-
-        return this;
-    }
-});
-
 var TYPE = {
     NULL:       '[object Null]',
     ARRAY:      '[object Array]',
@@ -29,7 +12,45 @@ var TYPE = {
     ARGUMENTS:  '[object Arguments]'
 };
 
-var xtnd = {
+/**
+ * Copy all of the properties in the source objects
+ * over to the destination object,
+ * and return the destination object
+ *
+ * @param {Object} dest
+ * @param {Object} source
+ *
+ * @returns Object
+ */
+function xtnd(dest) {
+    var arg, keys;
+
+    for (var i = 1, l = arguments.length; i < l; i++) {
+        arg = arguments[i];
+        keys = xtnd.keys(arguments[i]);
+
+        for (var j = 0; j < keys.length; j++) {
+            dest[ keys[j] ] = arg[ keys[j] ];
+        }
+    }
+
+    return dest;
+}
+
+/**
+ * Returns an array of a given object's own enumerable properties
+ *
+ * @param {Object} obj
+ *
+ * @returns Array
+ */
+xtnd.keys = function(obj) {
+    var type = obj && typeof obj;
+    return type === 'object' || type === 'function' ? Object.keys(obj) : [];
+};
+
+
+xtnd(xtnd, {
 
     TYPE: TYPE,
 
@@ -51,18 +72,6 @@ var xtnd = {
         }
 
         return o_toString.call(obj);
-    },
-
-    /**
-     * Returns an array of a given object's own enumerable properties
-     *
-     * @param {Object} obj
-     *
-     * @returns Array
-     */
-    keys: function(obj) {
-        var type = obj && typeof obj;
-        return type === 'object' || type === 'function' ? Object.keys(obj) : [];
     },
 
     /**
@@ -199,7 +208,7 @@ var xtnd = {
 
         return ans;
     }
-};
+});
 
 /**
  * Creating type detection functions
@@ -223,7 +232,6 @@ Object.keys(TYPE).forEach(function(type) {
         return xtnd.type(obj) === val;
     };
 });
-
 
 if (typeof module === 'object' && module.exports) {
     module.exports = xtnd;
