@@ -1,6 +1,6 @@
 {
     "name": "xtnd",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "Utility for arrays and objects",
     "keywords": [ "utility", "extend", "each", "map", "filter" ],
     "author": {
