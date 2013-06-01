@@ -88,12 +88,19 @@ xtnd(xtnd, {
      * @returns Object
      */
     hash: function(arr, key) {
+        arr = xtnd.array(arr);
         var res = {};
-        arr.forEach(function(val) {
-            if (val && typeof val === 'object' && key in val) {
-                res[ val[key] ] = val;
+        xtnd.each(arr, key ?
+            function(val) {
+                if (xtnd.isObject(val) && key in val) {
+                    res[ val[key] ] = val;
+                }
             }
-        });
+            :
+            function(val) {
+                res[''+val] = 1;
+            }
+        );
         return res;
     },
 

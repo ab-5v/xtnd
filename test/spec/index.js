@@ -164,6 +164,12 @@ describe('xtnd', function() {
             expect( xtnd.hash([null, undefined, 1, 'asd', function() {}], 'a') )
                 .to.eql({});
         });
+
+        it('shoud return hash of array values w/o key', function() {
+            expect( xtnd.hash(['foo', 'bar', 'lolo']) )
+                .to.eql( {'foo': 1, 'bar': 1, 'lolo': 1} );
+        });
+
     });
 
     describe('array', function() {
