@@ -25,6 +25,7 @@ var xtnd = require('xtnd');
 ### Api
 
 * [xtnd](#xtnd)
+* [xtnd.keys](#keys)
 * [xtnd.values](#values)
 * [xtnd.array](#array)
 * [xtnd.hash](#hash)
@@ -40,6 +41,17 @@ var xtnd = require('xtnd');
 Extends any object with `src`
 ```js
 var a = xtnd({}, {a: 1});  // {a: 1}
+```
+
+<a name="keys"></a>
+#### xtnd.keys(any)
+Returns all object's keys
+```js
+function f() {}
+f.a = 1; f.b = 2;
+xtnd.keys(f);               // ['a', 'b']
+xtnd.keys({a: 1, b: 2});    // ['a', 'b']
+xtnd.keys([1, 2]);          // []
 ```
 
 <a name="values"></a>
