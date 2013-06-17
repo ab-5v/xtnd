@@ -75,6 +75,23 @@ xtnd(xtnd, {
     },
 
     /**
+     * Returns all of the values of the object's properties.
+     *
+     * @param {Object} obj
+     *
+     * @returns Array
+     */
+    values: function(obj) {
+        var res = [];
+
+        xtnd.each(obj, function(val) {
+            res.push(val);
+        });
+
+        return res;
+    },
+
+    /**
      * Converts array of objects to hash by one of the object's key.
      * It skips objects, that doesn't have given key.
      *

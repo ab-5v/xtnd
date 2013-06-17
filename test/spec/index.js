@@ -148,6 +148,18 @@ describe('xtnd', function() {
 
     });
 
+    describe('values', function() {
+
+        it('should return values of object', function() {
+            expect( xtnd.values({a: 1, b: 2}) ).to.eql( [1, 2] );
+        });
+
+        it('should return array itself', function() {
+            expect( xtnd.values([1, 2, 3]) ).to.eql( [1, 2, 3] );
+        });
+
+    });
+
     describe('hash', function() {
 
         it('should return hash by array', function() {
