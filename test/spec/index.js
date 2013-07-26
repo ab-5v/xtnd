@@ -326,6 +326,41 @@ describe('xtnd', function() {
 
     });
 
+    describe('clone', function() {
+
+        it('should clone object', function() {
+
+            expect( xtnd.clone({a: 1, b: '2', c: false, d: null, e: undefined}) )
+                .to.eql( {a: 1, b: '2', c: false, d: null, e: undefined} );
+        });
+
+        it('should clone array', function() {
+            expect( xtnd.clone([1, 2, 3]) ).to.eql( [ 1, 2, 3 ] );
+        });
+
+        it('should make a deep copy', function() {
+            var o1 = {a: {b: 1}};
+            var o2 = xtnd.clone(o1);
+            o1.a.b = 2;
+
+            expect( o2 ).to.eql( {a: {b: 1}} );
+        });
+
+        it('should copy function by reference', function() {
+            var f = function() {};
+
+            expect( xtnd.clone({f: f}) ).to.eql( {f: f} );
+        });
+
+        it('should copy primitives', function() {
+            expect( xtnd.clone(1234) ).to.eql( 1234 );
+            expect( xtnd.clone('12') ).to.eql( '12' );
+            expect( xtnd.clone(null) ).to.eql( null );
+            expect( xtnd.clone(true) ).to.eql( true );
+            expect( xtnd.clone(undefined) ).to.eql( undefined );
+        });
+    });
+
     describe('filter', function() {
 
         it('should filter array', function() {

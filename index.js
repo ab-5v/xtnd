@@ -211,6 +211,30 @@ xtnd(xtnd, {
     },
 
     /**
+     * Creates a deep copy of the object.
+     * Any nested objects or arrays will be duplicated.
+     * Nested functions will be copied by reference
+     *
+     * @param {Object} list
+     *
+     * @returns Object
+     */
+    clone: function(src) {
+        var res = src;
+        var type = xtnd.type(src);
+
+        if (type === TYPE.ARRAY || type === TYPE.OBJECT) {
+            res = type === TYPE.OBJECT ? {} : [];
+
+            xtnd.each(src, function(val, key) {
+                res[key] = xtnd.clone(val);
+            });
+        }
+
+        return res;
+    },
+
+    /**
      * Looks through each value in the list, returning the first one that passes a callback.
      *
      * @param {Array} arr

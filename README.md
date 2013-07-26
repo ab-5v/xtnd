@@ -32,6 +32,7 @@ var xtnd = require('xtnd');
 * [xtnd.each](#each)
 * [xtnd.map](#map)
 * [xtnd.filter](#filter)
+* [xtnd.clone](#clone)
 * [xtnd.find](#find)
 * [xtnd.is&lt;Type&gt;](#is)
 
@@ -107,6 +108,10 @@ var res = xtnd.map(src, function(val, i, orig) {
 <a name="filter"></a>
 #### xtnd.filter(list, function(val, i, orig) {})
 Like a map, but you can use any falsy-value to skip `val`.
+
+<a name="clone"></a>
+#### xtnd.clone(src)
+Creates a deep copy of the `src`.
 
 <a name="find"></a>
 #### xtnd.find(list, function(val, i, orig) {})
