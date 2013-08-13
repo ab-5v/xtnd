@@ -107,7 +107,7 @@ var res = xtnd.map(src, function(val, i, orig) {
 
 <a name="filter"></a>
 #### xtnd.filter(list, function(val, i, orig) {})
-Like a map, but you can use any falsy-value to skip `val`.
+Like a map, looks through each value in the list, returning a list of all the values that pass a callback truth test.
 
 <a name="clone"></a>
 #### xtnd.clone(src)
