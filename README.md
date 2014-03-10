@@ -56,7 +56,7 @@ xtnd.keys([1, 2]);          // []
 ```
 
 <a name="values"></a>
-#### xtnd.array(any)
+#### xtnd.values(any)
 Returns all object's values
 ```js
 xtnd.values([1, 2]);         // [1, 2]
