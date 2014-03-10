@@ -85,7 +85,7 @@ xtnd.hash([{a: 1, b: 2}, {a: 3, b: 4}], 'a');   // {1: {a: 1, b: 2}, 3: {a: 3, b
 
 <a name="each"></a>
 #### xtnd.each(list, function(val, i, orig) {})
-Like any other `each` can iterate through arrays and objects. You can return `false` from callback and it will stop iterationg.
+Like any other `each` can iterate through arrays and objects. You can return `false` from callback and it will stop iteration.
 ```js
 xtnd.each(list, function(val, i, orig) {
   return false;
@@ -132,7 +132,7 @@ xtnd.isNull(null);            // true
 xtnd.isNull({});              // false
 
 xtnd.isArray([1, 2]);         // true
-xtnd.isObject([1, 2);         // false
+xtnd.isObject([1, 2]);        // false
 
 xtnd.isObject({a: 1});        // true
 xtnd.isArguments(arguments);  // true
