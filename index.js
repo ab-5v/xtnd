@@ -255,6 +255,30 @@ xtnd(xtnd, {
         });
 
         return ans;
+    },
+
+    /**
+     * Converts URL params into object
+     *
+     * @param {string} st string
+     * @param {string} eq name-val splitter
+     * @param {string} sp name-val pair splitter
+     *
+     * @returns object
+     */
+    param: function(st, eq, sp) {
+        st = st || '';
+        eq = eq || '=';
+        sp = sp || '&';
+
+        var res = {};
+
+        xtnd.each(st.split(sp), function(pair) {
+            pair = pair.split(eq);
+            res[pair.shift()] = pair.join(eq);
+        });
+
+        return res;
     }
 });
 

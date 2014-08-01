@@ -34,6 +34,7 @@ var xtnd = require('xtnd');
 * [xtnd.filter](#filter)
 * [xtnd.clone](#clone)
 * [xtnd.find](#find)
+* [xtnd.param](#param)
 * [xtnd.is&lt;Type&gt;](#is)
 
 
@@ -122,6 +123,15 @@ var res = xtnd.find([2, 3, 4, 5], function(val, i, orig) {
 });
 // res === 3
 ```
+
+<a name="param"></a>
+#### xtnd.param(str, eq, sp)
+Converts URL params into object
+```js
+xtnd.param('a=1&b=2')               // {a: '1', b: '1'}
+xtnd.param('a:1|b:2', ':', '|')     // {a: '1', b: '2'}
+```
+
 
 <a name="is"></a>
 #### xtnd.is&lt;Type&gt;

@@ -420,4 +420,20 @@ describe('xtnd', function() {
 
     });
 
+    describe('param', function() {
+
+        it('should split by defaul params', function() {
+            expect( xtnd.param('a=1&b=2') ).to.eql( {a: '1', b: '2'} );
+        });
+
+        it('should spit by custom params', function() {
+            expect( xtnd.param('a:1;b:2', ':', ';') ).to.eql( {a: '1', b: '2'} );
+        });
+
+        it('should should preserve second equal splitter', function() {
+            expect( xtnd.param('a=1&b=2=3') ).to.eql( {a: '1', b: '2=3'} );
+        });
+
+    });
+
 });
