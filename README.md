@@ -71,7 +71,7 @@ xtnd.array([1]);        // [1]
 xtnd.array({a: 1});     // [{a: 1}]
 xtnd.array(arguments);  // converts to array
 xtnd.array(undefined);  // []
-xtnd.array(null);       // null
+xtnd.array(null);       // [null]
 xtnd.array(123);        // [123]
 xtnd.array('a');        // ['a']
 ```
